@@ -1,0 +1,267 @@
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Управление проектами</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+
+      
+      <widget class="QWidget" name="tab_clients">
+       <attribute name="title">
+        <string>Клиенты</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_clients">
+        <item>
+         <layout class="QFormLayout" name="formLayout_clients">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_client_name">
+            <property name="text"><string>Имя клиента:</string></property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="line_client_name" />
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_client_contact">
+            <property name="text"><string>Контакт:</string></property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="line_client_contact" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add_client">
+          <property name="text"><string>Добавить клиента</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLineEdit" name="line_search_client">
+            <property name="placeholderText"><string>Поиск клиента...</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete_client">
+            <property name="text"><string>Удалить</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_clients">
+          <property name="columnCount"><number>3</number></property>
+          <property name="horizontalHeaderLabels">
+           <stringlist><string>ID</string><string>Имя</string><string>Контакт</string></stringlist>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      
+      <widget class="QWidget" name="tab_employees">
+       <attribute name="title"><string>Сотрудники</string></attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_employees">
+        <item>
+         <layout class="QFormLayout" name="formLayout_employees">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_employee_name">
+            <property name="text"><string>Имя сотрудника:</string></property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="line_employee_name" />
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_employee_position">
+            <property name="text"><string>Должность:</string></property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="line_employee_position" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add_employee">
+          <property name="text"><string>Добавить сотрудника</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLineEdit" name="line_search_employee">
+            <property name="placeholderText"><string>Поиск сотрудника...</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete_employee">
+            <property name="text"><string>Удалить</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_employees">
+          <property name="columnCount"><number>3</number></property>
+          <property name="horizontalHeaderLabels">
+           <stringlist><string>ID</string><string>Имя</string><string>Должность</string></stringlist>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      
+      <widget class="QWidget" name="tab_projects">
+       <attribute name="title"><string>Проекты</string></attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_projects">
+        <item>
+         <layout class="QFormLayout" name="formLayout_projects">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_project_name">
+            <property name="text"><string>Название проекта:</string></property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="line_project_name" />
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_project_start">
+            <property name="text"><string>Дата начала:</string></property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDateEdit" name="date_project_start">
+            <property name="calendarPopup"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_project_end">
+            <property name="text"><string>Дата окончания:</string></property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDateEdit" name="date_project_end">
+            <property name="calendarPopup"><bool>true</bool></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add_project">
+          <property name="text"><string>Добавить проект</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLineEdit" name="line_search_project">
+            <property name="placeholderText"><string>Поиск проекта...</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete_project">
+            <property name="text"><string>Удалить</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_projects">
+          <property name="columnCount"><number>5</number></property>
+          <property name="horizontalHeaderLabels">
+           <stringlist><string>ID</string><string>Название</string><string>Клиент</string><string>Начало</string><string>Окончание</string></stringlist>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      
+      <widget class="QWidget" name="tab_tasks">
+       <attribute name="title">
+        <string>Задачи</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_tasks">
+        <item>
+         <layout class="QFormLayout" name="formLayout_tasks">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_task_description">
+            <property name="text"><string>Описание задачи:</string></property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="line_task_description" />
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_task_due">
+            <property name="text"><string>Срок выполнения:</string></property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDateEdit" name="date_task_due">
+            <property name="calendarPopup"><bool>true</bool></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add_task">
+          <property name="text"><string>Добавить задачу</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLineEdit" name="line_search_task">
+            <property name="placeholderText"><string>Поиск задачи...</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delete_task">
+            <property name="text"><string>Удалить</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_tasks">
+          <property name="columnCount"><number>5</number></property>
+          <property name="horizontalHeaderLabels">
+           <stringlist><string>ID</string><string>Описание</string><string>Проект</string><string>Срок</string><string>Статус</string></stringlist>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   <item><layout class="QHBoxLayout" name="horizontalLayout_buttons"><item><spacer /></item><item><widget class="QPushButton" name="btn_import_excel"><property name="text"><string>Загрузить из Excel</string></property></widget></item><item><widget class="QPushButton" name="btn_export_excel"><property name="text"><string>Выгрузить в Excel</string></property></widget></item></layout></item></layout>
+  </widget>
+ </widget>
+ <resources />
+ <connections />
+</ui>
