@@ -27,7 +27,7 @@ try:
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="123456",
+        password="12345678",
         database="course_db",
         charset="utf8mb4",
         collation="utf8mb4_unicode_ci"
@@ -40,13 +40,15 @@ except mysql.connector.Error as err:
     raise
 
 
-class Client:
+class People:
     def __init__(self, id=None, name=None, contact=None):
         self._id = id
-        self._name = name
-        self._contact = contact
-        self._projects = []
-        logger.debug(f"Создан объект Client: id={id}, name={name}, contact={contact}")
+        self._name = None
+        self._contact = None
+        if name is not None:
+            self.name = name
+        if contact is not None:
+            self.contact = contact
 
     @property
     def id(self):
@@ -63,7 +65,7 @@ class Client:
     @name.setter
     def name(self, value):
         if value is not None:
-            self._name = Validator.validate_non_empty(value, "Имя клиента")
+            self._name = Validator.validate_non_empty(value, "Имя")
         else:
             self._name = value
 
@@ -77,6 +79,13 @@ class Client:
             self._contact = Validator.validate_email(value)
         else:
             self._contact = value
+
+
+class Client(People):
+    def __init__(self, id=None, name=None, contact=None):
+        super().__init__(id=id, name=name, contact=contact)
+        self._projects = []
+        logger.debug(f"Создан объект Client: id={id}, name={name}, contact={contact}")
 
     @property
     def projects(self):
@@ -100,33 +109,14 @@ class Client:
             return False
 
 
-class Employee:
-    def __init__(self, id=None, name=None, position=None):
-        self._id = id
-        self._name = name
+class Employee(People):
+    def __init__(self, id=None, name=None, position=None, contact=None):
+        # contact для сотрудника может быть опционален
+        super().__init__(id=id, name=name, contact=contact)
         self._position = position
         self._tasks = []
         self._projects = []
         logger.debug(f"Создан объект Employee: id={id}, name={name}, position={position}")
-
-    @property
-    def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, value):
-        self._id = value
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        if value is not None:
-            self._name = Validator.validate_non_empty(value, "Имя сотрудника")
-        else:
-            self._name = value
 
     @property
     def position(self):
