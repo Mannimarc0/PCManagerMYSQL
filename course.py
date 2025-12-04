@@ -1846,8 +1846,9 @@ ID задачи: {task_id}
             return
 
         try:
-            sql = "SELECT * FROM clients WHERE client_name LIKE %s OR client_contact LIKE %s"
-            cursor.execute(sql, (f"%{search_text}%", f"%{search_text}%"))
+            # Поиск по ID, имени или контакту
+            sql = "SELECT * FROM clients WHERE client_id = %s OR client_name LIKE %s OR client_contact LIKE %s"
+            cursor.execute(sql, (search_text if search_text.isdigit() else None, f"%{search_text}%", f"%{search_text}%"))
             clients = cursor.fetchall()
             logger.info(f"Найдено клиентов по запросу '{search_text}': {len(clients)}")
 
@@ -1871,8 +1872,9 @@ ID задачи: {task_id}
             return
 
         try:
-            sql = "SELECT * FROM employee WHERE employee_name LIKE %s OR employee_position LIKE %s"
-            cursor.execute(sql, (f"%{search_text}%", f"%{search_text}%"))
+            # Поиск по ID, имени или должности
+            sql = "SELECT * FROM employee WHERE employee_id = %s OR employee_name LIKE %s OR employee_position LIKE %s"
+            cursor.execute(sql, (search_text if search_text.isdigit() else None, f"%{search_text}%", f"%{search_text}%"))
             employees = cursor.fetchall()
             logger.info(f"Найдено сотрудников по запросу '{search_text}': {len(employees)}")
 
@@ -1896,8 +1898,9 @@ ID задачи: {task_id}
             return
 
         try:
-            sql = "SELECT * FROM project WHERE project_name LIKE %s"
-            cursor.execute(sql, (f"%{search_text}%",))
+            # Поиск по ID проекта, названию или ID клиента
+            sql = "SELECT * FROM project WHERE project_id = %s OR project_name LIKE %s OR project_client = %s"
+            cursor.execute(sql, (search_text if search_text.isdigit() else None, f"%{search_text}%", search_text if search_text.isdigit() else None))
             projects = cursor.fetchall()
             logger.info(f"Найдено проектов по запросу '{search_text}': {len(projects)}")
 
@@ -1921,8 +1924,9 @@ ID задачи: {task_id}
             return
 
         try:
-            sql = "SELECT * FROM task WHERE task_description LIKE %s OR task_status LIKE %s"
-            cursor.execute(sql, (f"%{search_text}%", f"%{search_text}%"))
+            # Поиск по ID задачи, описанию, статусу или ID проекта
+            sql = "SELECT * FROM task WHERE task_id = %s OR task_description LIKE %s OR task_status LIKE %s OR task_project = %s"
+            cursor.execute(sql, (search_text if search_text.isdigit() else None, f"%{search_text}%", f"%{search_text}%", search_text if search_text.isdigit() else None))
             tasks = cursor.fetchall()
             logger.info(f"Найдено задач по запросу '{search_text}': {len(tasks)}")
 
